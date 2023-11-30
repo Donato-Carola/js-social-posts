@@ -76,14 +76,27 @@ posts.forEach((element) => {
 });
 
 const buttonLike = document.querySelectorAll("a.like-button.js-like-button");
-
-buttonLike.addEventListener("click", function () {
-  buttonLike.classList.toggle("like-button--liked");
-});
-
 const counterLike = document.querySelectorAll("strong.js-likes-counter");
 
+for (let i = 0; i<buttonLike.length; i++){
 
+  const buttonLikeGreen =   buttonLike[i];
+  buttonLikeGreen.addEventListener('click', function(event){
+      event.preventDefault();
+
+      if(buttonLikeGreen.classList.contains('like-button--liked')){
+        buttonLikeGreen.classList.remove('like-button--liked');
+   
+        counterLike[i].innerHTML = parseInt(counterLike[i].innerHTML,10) - 1;
+
+      }else{
+        buttonLikeGreen.classList.add('like-button--liked');
+        counterLike[i].innerHTML = parseInt(counterLike[i].innerHTML,10) + 1;
+      }
+      
+
+     })
+}
 
 
 //Function
